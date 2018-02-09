@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Enjoy your Music</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/demo.css">
+<link href="js/hls/video-js.css" rel="stylesheet">
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/hls/video.js"></script>
+
+<script>
+    $(document).ready(function() {
+    var audName = localStorage.getItem("AudioName");
+    //var moviePoster = localStorage.getItem("MoviePoster");
+
+    var audurl = 'audios/' + audName + '.mp3';
+    console.log("AudioName: " + audName);
+    console.log("URL: " + audurl);
+
+    var audPlayerStr = '<audio id="audioPlayer" class="video-js vjs-default-skin" autoplay controls preload="auto" width="480" height="270" data-setup="{}" src="' + audurl + '">';
+    audPlayerStr = audPlayerStr + '<source id="mp3Src" src="' + audurl + '" type="audio/mp3"/></audio>';
+    $("#audcontainer").html(audPlayerStr);
+
+    //$('#audioPlayer').attr('poster', "images/" + audName + ".png");
+    //$('#mp3Src').attr('src', audurl);
+    //$("#audioPlayer").html('<source src=' + url + ' type="audio/mp3"></source>');
+
+    //var player = window.player = videojs('audioPlayer');
+    //player.play();    
+    });
+</script>
+</head>
+
+<body>
+
+<div id="audcontainer" class="container">
+    <!-- audio id="audioPlayer" class="video-js vjs-default-skin" controls preload="auto" width="480" height="270" data-setup='{}'> 
+         <source id="mp3Src" type='audio/mp3'/>       
+    </audio -->
+</div>
+
+</body>
+</html>

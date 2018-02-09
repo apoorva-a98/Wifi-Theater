@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Enjoy your movie</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="css/demo.css">
+		<link href="js/hls/video-js.css" rel="stylesheet">
+
+        <script src="js/jquery-3.1.1.min.js"></script>
+		<script src="js/hls/video.js"></script>
+	    <script src="js/hls/videojs-contrib-hls.js"></script>
+
+<script>
+
+$(document).ready(function() {
+  var movieName = localStorage.getItem("MovieName");
+  //var moviePoster = localStorage.getItem("MoviePoster");
+
+  var url = 'videos/' + movieName + '/index.m3u8';
+  console.log("MovieName: " + movieName);
+  $('#vdoPlayer').attr('poster', "images/" + movieName + ".png");
+  $("#vdoPlayer").html('<source src=' + url + ' type="application/x-mpegURL"></source>');
+
+  //$("#vdoPlayer video")[0].load();
+  //poster="images/1.png" 
+
+  console.log("URL: " + url);
+
+  var player = window.player = videojs('vdoPlayer');
+  player.play();    
+});
+
+</script>
+</head>
+
+<body>
+<div class="container">
+  <!-- video id="vdoPlayer" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" preload="auto" width="480" height="270" controls data-setup='{"fluid": true}'></video -->
+  <video id="vdoPlayer" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" preload="auto" width="480" height="270" controls></video>
+</div>
+
+</body>
+</html>

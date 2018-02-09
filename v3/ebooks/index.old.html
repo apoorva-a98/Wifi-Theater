@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Book Shelf</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/custom-styles.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/font-awesome-ie7.css">
+
+
+  <!--   <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/portBox.slimscroll.min.js"></script> -->
+
+    <link href="css/page.css" rel="stylesheet"/>
+    <link href="css/portBox.css" rel="stylesheet" />
+
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link type="text/css" rel="stylesheet" href="css/featherlight.css" title="Featherlight Styles" />
+
+    <meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+
+<body onload="loadProducts();" style="background-color: #ecc381;">
+
+<div class="loading">
+    <div class="loader"><img src="images/themeloader.gif" alt=""/></div>
+</div>
+<div class="container">
+    <div class="banner">
+        <!-- div class="row" id="purchaseProducts">
+            <div class="col-lg-12" style="margin-top: 110px;">
+				<button onclick="loadProducts();">Load Products</button>
+                <div id="availableProducts" style="border-color:red;"> </div>			
+			</div>	
+		</div -->
+	
+        <div class="row" id="topics">
+            <div class="col-lg-12" style="margin-top: 110px;">
+                <div class="col-lg-12"  style="background:url(images/1shelfbg.jpg);background-size:100% 100%;" >
+                    <div class="block" id="firstshelf" style="padding-bottom: 0; margin-left: 190px;">
+                        <ul style="margin:20px auto;display: inline-flex; list-style-type: none;">
+                            <li class="shelf"><a data-display="empty1" class="initialism "><span ><img  src="images/Book1.png" class="img-responsive"  id="book1Icon"/></span></a></li>
+                            <li class="shelf"><a data-display="empty3" class="initialism "><span ><img  src="images/Book2.jpg" class="img-responsive"  id="book2Icon"/></span></a></li>
+                            <li class="shelf"><a data-display="empty2" class="initialism "><span ><img  src="images/Book3.jpg" class="img-responsive" id="book3Icon"/></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12"  style="background:url(images/1shelfbg.jpg);background-size:100% 100%;" >
+                    <div class="block" id="firstshelf" style="padding-bottom: 0; margin-left: 190px;">
+                        <ul style="margin:20px auto;display: inline-flex; list-style-type: none;">
+                            <li class="shelf"><a data-display="empty5" class="initialism "><span ><img  src="images/Book4.jpg" class="img-responsive" id="book4Icon"/></span></a></li>
+                            <li class="shelf"><a data-display="empty6" class="initialism "><span ><img  src="images/Book5.jpg" class="img-responsive" id="book5Icon"/></span></a></li>
+                            <li class="shelf"><a data-display="empty7" class="initialism "><span ><img  src="images/Book6.jpg" class="img-responsive" id="book6Icon"/></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div id="empty1" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book1/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty3" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book2/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty2" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book3/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+   <!--  <div id="empty4" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="bookshelf/pages/samples/book4/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div> -->
+    <div id="empty5" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book4/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty6" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book5/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty7" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book6/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+</div>
+
+<div id="purchaseModalDiv"></div>
+
+<script type="text/javascript">
+var productsDisplay = "";
+
+function loadProducts()
+{
+    if(localStorage.getItem("cubbyPurchase") != "done")
+    {
+        $('#book3Icon').css('opacity', '0.4');
+        $('#book4Icon').css('opacity', '0.4');
+        $('#book5Icon').css('opacity', '0.4');
+        $('#book6Icon').css('opacity', '0.4');
+
+        var productId = ["com.thrivykids.app.ios.cubby.product"];
+
+         inAppPurchase
+          .getProducts(productId)
+          .then(function (products) {
+            /*
+            {
+                productId: "com.thrivykids.app.ios.cubby.product", title: "Chubby Purchase", description: "Chubby Purchase", price: "₹ 250.00"
+            }
+            */
+            console.log("Products: " + products);
+
+            $.each(products, function(key, value) {
+              productsDisplay = productsDisplay + "<button type='button' class='btn btn-warning' onclick=\"purchaseFunction('" + value.productId + "');\">" + value.title + "</button>";
+            });     
+
+          })
+          .catch(function (err) {
+            console.log(err);
+          });   
+    }
+    else
+    {
+        $('#empty2').css('opacity', '1');
+        $('#empty5').css('opacity', '1');
+        $('#empty6').css('opacity', '1');
+        $('#empty7').css('opacity', '1');
+    }
+}
+
+function showPurchaseDialog()
+{
+    var strVar="";
+    strVar += "<div class=\"modal\" id=\"purchaseModal\" role=\"dialog\">";
+    strVar += "  <div class=\"modal-dialog modal-sm\">";
+    strVar += "";
+    strVar += "    <!-- Modal content-->";
+    strVar += "    <div class=\"modal-content\">";
+    strVar += "      <div class=\"modal-header\">";
+    strVar += "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;<\/button>";
+    strVar += "        <h4 class=\"modal-title\">Purchase Cubby Paid Modules<\/h4>";
+    strVar += "      <\/div>";
+    strVar += "      <div class=\"modal-body\">";
+    strVar += "    <div style=\"text-align: center; margin:0 auto;\">";
+/*
+    strVar += "         <label for=\"username\" id=\"loginUserLbl\">Username<\/label>";
+    strVar += "         <input type=\"text\" placeholder=\"Username\" id=\"loginUser\"\/><br>";
+    strVar += "         <label for=\"password\" id=\"loginPassLbl\">Password<\/label>";
+    strVar += "         <input type=\"password\" placeholder=\"Password\" id=\"loginPass\"\/>";
+*/    
+    strVar += productsDisplay;
+    strVar += "    <\/div>";
+    strVar += "      <\/div>";
+    strVar += "      <div class=\"modal-footer\">";
+    strVar += "        <label for=\"loginCheckLbl\" id=\"loginCheckLbl\"><\/label>";
+    strVar += "        <!-- button id=\"purchaseSubmit\" onclick=\"purchaseFunction()\" type=\"button\" class=\"btn btn-success\">Purchase<\/button -->";
+    strVar += "        <button id=\"purchaseCancel\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel<\/button>";
+    strVar += "      <\/div>";
+    strVar += "    <\/div>";
+    strVar += "";
+    strVar += "  <\/div>";
+    strVar += "<\/div>";
+
+    $('#purchaseModalDiv').html(strVar);                       
+    $('#purchaseModal').modal('toggle');
+}
+
+function purchaseFunction(productId)
+{
+    inAppPurchase
+      .buy(productId)
+      .then(function (data) {
+        console.log(JSON.stringify(data));
+        // The consume() function should only be called after purchasing consumable products
+        // otherwise, you should skip this step
+        //return inAppPurchase.consume(data.type, data.receipt, data.signature);
+      })
+      .then(function () {
+        console.log('consume done!');
+        localStorage.setItem("cubbyPurchase", "done");
+      })
+      .catch(function (err) {
+        console.log(err);        
+      });    
+}
+
+function onDeviceReady() {
+    console.log("In onDeviceReady");
+}
+</script>
+    
+<script type="text/javascript">
+
+    $('.portBox').hide();
+
+    $('.shelf').click(function(event) {
+        var divName = $(event.target).parent().parent().data('display');
+
+        if(divName === "empty2" || divName === "empty5" || divName === "empty6" || divName === "empty7")
+        {
+            if(localStorage.getItem("cubbyPurchase") != "done")
+            {
+                showPurchaseDialog();
+            }
+            else
+            {
+                $('.loading').fadeIn();
+                $('#'+divName).show();
+                $('#'+divName).children().prop("src",function(){
+                    return $(this).data('src');
+                });
+                $('#'+divName).children().on('load', function () {
+                    $('.loading').fadeOut();
+                });
+            }        
+        }
+        else
+        {
+            $('.loading').fadeIn();
+            $('#'+divName).show();
+            $('#'+divName).children().prop("src",function(){
+                return $(this).data('src');
+            });
+            $('#'+divName).children().on('load', function () {
+                $('.loading').fadeOut();
+            });
+        }        
+    });
+
+</script>
+
+</body>
+</html>

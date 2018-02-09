@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Untitled Document</title>
+    <!-- Bootstrap -->
+	<link href="v3/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="style2.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+  </head>
+  <body>
+	<script src="v3/bootstrap-3.3.7-dist/js/jquery-1.11.3.min.js"></script>
+	<script src="v3/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    
+   <div id="topbar">
+   WIFI MOVIES
+   </div>
+   
+   <div class="container">
+   		<div class="row">
+        	<div class="col-md-3 col-xs-6">
+            <a href=""><div class="tile" id="movie1" class="img-responsive">
+            <div class="view">
+            	<a href=""><div class="getinfo" onMouseOver="show_sidebar()" onMouseOut="hide_sidebar()">
+                Get Info
+                </div></a>
+                <a href=""><div class="watchmovie">
+                Watch Movie
+         		</div></a>
+            </div>
+            <div class="text">Star Trek Beyond</div>
+            </div>
+            </a>
+            </div>
+            
+            <div class="col-md-3 col-xs-6">
+            <a href=""><div class="tile" id="movie2" class="img-responsive">
+            <div class="view">
+            	<a href=""><div class="getinfo">
+                Get Info
+                </div></a>
+                <a href=""><div class="watchmovie">
+                Watch Movie
+         		</div></a>
+            </div>
+            <div class="text">Kung-fu Panda 3</div>
+            </div>
+            </a>
+            </div>
+            
+            <div class="col-md-3 col-xs-6">
+            <a href=""><div class="tile" id="movie3" class="img-responsive"><div class="view">
+            	<a href=""><div class="getinfo">
+                Get Info
+                </div></a>
+                <a href=""><div class="watchmovie">
+                Watch Movie
+         		</div></a>
+            </div>
+            <div class="text">Captian America: Civil War</div>
+            </div>
+            </a>
+            </div>
+            
+            <div class="col-md-3 col-xs-6">
+            <a href=""><div class="tile" id="movie4" class="img-responsive">
+            <div class="view">
+            	<a href=""><div class="getinfo">
+                Get Info
+                </div></a>
+                <a href=""><div class="watchmovie">
+                Watch Movie
+         		</div></a>
+            </div>
+            <div class="text">Avengers</div>
+            </div>
+            </a>
+            </div>
+        </div>
+   </div>
+            
+        
+   
+  <div class="overlay">
+  <div class="popupwindow">
+  
+  <div class="container">
+  	<div class="row">
+    	<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12" >
+        	
+           	<div class="tile1">
+            <img src="v3/images/1.png" width="80%" class="img-responsive">
+            </div>
+           
+        </div>
+        
+        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+        
+        <div id="info">
+        <table>
+        <tr width="50%"><h3 id="imdb"><span>iMdb:</span>7.7</h3></tr>
+        <tr width="50%"><h3 id="hrs">120min</h3></tr>
+        </table><br>
+        
+       <!-- <div class="container">
+        	<div class="row">
+            	<div class="col-xs-"><h3 id="imdb"><span>iMdb:</span>7.7</h3></div>
+                <div class="col-xs-1 col-xs-offset-8"><h3 id="hrs">120min</h3></div>
+            </div>
+        </div>-->
+        
+        <p id="infocontent" >The first leg of the USS Enterprise's five year mission takes them into uncharted territory. There the Enterprise is nearly destroyed and strands Kirk and his crew on a remote the first leg of the USS Enterprise's five year mission takes them into uncharted territory. There the Enterprise is nearly destroyed and strands Kirk and his crew on a remote.</p><br>
+        <h3><span>Stars</span></h3><br>
+        <p>Anton Yelchin, Chris Pine, Idris Elba, Simon Pegg, Zoe Saldana, Zachary Quinto, Karl Urban, John Cho</p>
+        <div id="playmovie"><div id="mtext">Watch Movie</div><img src="v3/images/play.png" class="img-responsive"></div>
+       
+        </div>
+  	
+    </div>
+  </div>
+  
+  </div>
+  </div>
+  
+  </body>
+</html>
+
+<script type="text/javascript">
+var a=document.getElementsByClassName("overlay")[0];
+function display(){
+a.setAttribute("class","show");
+	}
+	
+	
+function show_sidebar()
+{
+document.getElementsByClassName('overlay').style.visibility="visible";
+}
+
+function hide_sidebar()
+{
+document.getElementsByClassName('overlay').style.visibility="hidden";
+}
+</script>
+

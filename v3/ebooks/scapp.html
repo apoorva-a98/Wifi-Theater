@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+      
+    <title>Spelling Classroom v2</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- link href="css/style.css" rel="stylesheet" -->
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/bootstrap.js"></script>
+   
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- script src="cordova.js"></script -->
+	<!--<script src="js/admob.js"></script>-->
+
+    <style>
+        @font-face { font-family: ObelixPro; src: url('fonts/ObelixPro/obelixprob-cyr.ttf'); } 
+        @font-face { font-family: Copse; src: url('fonts/ObelixPro/Copse-Regular.ttf'); } 
+        .selected-class-name {
+            //color: red; 
+            background-color: #66FFFF;
+        }        
+        .custom-wordlist .panel-heading
+        {
+            border-bottom: 0;            
+            background-color: #BED4F1;
+        }
+		
+		body, html {
+		  margin: 0;
+		  overflow: hidden;
+		  height:100%;
+		  width: 100%;
+		}
+
+		#left {
+		  background-color: #FC6E51;
+		  //text-align: center;
+		  height:435px;
+  		  overflow-y: scroll;
+		}
+
+		#right {
+		  background-color: #4FC1E9;
+		  //text-align: center;
+		  height:435px;
+  		  //overflow-y: scroll;
+		}
+
+		ul, ol {
+		  list-style: none;
+		}
+		
+		#wlaccordion li.panel{
+			margin-bottom: 0px;
+		}		
+
+		#activityaccordion li.panel{
+			margin-bottom: 0px;
+		}		
+
+		#myGameModalDialog {
+		  width: 100%;
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+		
+		#myGameModalDialogContent {
+		  height: auto;
+		  min-height: 100%;
+		  border-radius: 0;
+		}		
+		
+		#loginUserLbl, #loginPassLbl {
+		  padding-right: 10px;
+		  color: blue;
+		}		
+		
+		#loginCheckLbl {
+		  margin-right: 210px;
+		  color: red;
+		}
+		.modal-body {
+			padding: 0px;
+		}		
+</style>
+
+<style type="text/css">
+    .loaderModal
+    {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        -moz-opacity: 0.8;
+    }
+    .loaderCenter
+    {
+        z-index: 1000;
+        margin: 300px auto;
+        padding: 10px;
+        width: 130px;
+        background-color: White;
+        border-radius: 10px;
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -moz-opacity: 1;
+    }
+    .loaderCenter img
+    {
+        height: 128px;
+        width: 128px;
+    }
+</style>
+
+<script>
+var admobid = {};
+
+if( /(android)/i.test(navigator.userAgent) ) {
+	admobid = { // for Android
+		//banner: 'ca-app-pub-6869992474017983/9375997553',
+		banner: 'ca-app-pub-3877317663679733/5881279404',
+		interstitial: 'ca-app-pub-6869992474017983/1657046752'
+	};
+} else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+	admobid = { // for iOS
+		banner: 'ca-app-pub-3877317663679733/4404546205',
+		interstitial: 'ca-app-pub-6869992474017983/7563979554'
+	};
+} else {
+	admobid = { // for Windows Phone
+		banner: 'ca-app-pub-3877317663679733/5881279404',
+		interstitial: 'ca-app-pub-6869992474017983/1355127956'
+	};
+}
+
+function initAdMob() 
+{
+	if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) 
+	{
+		document.addEventListener('deviceready', initApp, false);
+	} 
+	else 
+	{
+		initApp();
+	}
+}
+
+function initApp() 
+{
+	if (! AdMob ) { alert( 'admob plugin not ready' ); return; }
+	initAd();
+
+	// display the banner at startup
+	createSelectedBanner();
+}
+
+function initAd(){
+	var defaultOptions = {
+		// adSize: 'SMART_BANNER',
+		adSize:AdMob.AD_SIZE.SMART_BANNER,
+		// width: integer, // valid when set adSize 'CUSTOM'
+		// height: integer, // valid when set adSize 'CUSTOM'
+		// position: AdMob.AD_POSITION.BOTTOM_CENTER,
+		bannerAtTop:false, //Mahesh: 05Jan2016, 2:04PM
+		// offsetTopBar: false, // avoid overlapped by status bar, for iOS7+
+		bgColor: 'yellow', // color name, or '#RRGGBB'
+		// x: integer,		// valid when set position to 0 / POS_XY
+		// y: integer,		// valid when set position to 0 / POS_XY
+		isTesting: true // set to true, to receiving test ad for testing purpose
+		// autoShow: true // auto show interstitial ad when loaded, set to false if prepare/show
+	};
+}
+
+function createSelectedBanner() {
+	 //AdMob.createBanner( {adId:admobid.banner, adSize:AdMob.AD_SIZE.SMART_BANNER, position:AdMob.AD_POSITION.BOTTOM_CENTER } );
+	AdMob.createBanner( {adId:admobid.banner, adSize:AdMob.AD_SIZE.SMART_BANNER, bannerAtTop:false } );
+	//AdMob.createBanner( {adId:admobid.interstitial, adSize:AdMob.AD_SIZE.SMART_BANNER, bannerAtTop:false} );
+}
+
+function hideAds()
+{
+	//alert("after login quick");
+	AdMob.hideBanner();
+}
+
+function hideAdMob()
+{
+    AdMob.hideBanner();
+}
+</script>
+	  
+<script>
+window.gILI = "";
+window.userid = "";
+window.username = "";
+window.userfname = "";
+window.userlname = "";
+window.listname = "";
+window.grade = "";
+window.category = "";
+window.membership = "";
+
+var loggedIn = false;
+
+function uniqueNumber() {
+    var date = Date.now();
+
+    // If created at same millisecond as previous
+    if (date <= uniqueNumber.previous) {
+        date = ++uniqueNumber.previous;
+    } else {
+        uniqueNumber.previous = date;
+    }
+
+    return date;
+}
+
+function uniqueNumber1() {
+
+	var date = new Date();
+	var components = [
+		date.getYear(),
+		date.getMonth(),
+		date.getDate(),
+		date.getHours(),
+		date.getMinutes(),
+		date.getSeconds(),
+		date.getMilliseconds()
+	];
+	
+	return components.join("");
+}	
+
+function getWordlist()
+{
+	console.log("In getWordlist");
+
+	var serverURL = "http://spellingclassroom.com/wp-admin/admin-ajax.php?action=getXMLListDataApp&XMLDATA=TRUE";
+	
+	$.ajax({
+		   url: serverURL,
+		   dataType: 'text',
+		   type: 'get',
+		   data: {data: ""},
+		   success: function(data, textStatus, jQxhr ) {
+					var finalHTML = processListJSON(data);
+					$('#wlaccordion').append(finalHTML);				
+			   },
+		   error: function(jqXhr, textStatus, errorThrown ){
+				console.log( errorThrown );
+			},
+            beforeSend: function () {
+               $(".loaderModal").show();
+            },
+            complete: function () {
+                $(".loaderModal").hide();
+            }			
+	});
+}
+
+function processListJSON(data)
+{
+	var obj = jQuery.parseJSON(data);
+	console.log('obj[0].length: ' + obj.length);
+
+	console.log(_.uniq(obj, function(obj) { return obj.Category; }));	
+	var uniqCategories = _.uniq(obj, function(obj) { return obj.Category; });
+	console.log("Categories Count: " + uniqCategories.length);
+
+	var finalHTML = "";
+
+	for (var i=0; i < uniqCategories.length; i++)
+	{
+		//console.log("Category Name: " + uniqCategories[i].Category);
+
+		finalHTML = finalHTML + "<li class='panel'><a data-toggle='collapse' data-parent='#wlaccordion' href='#linkChild" + i + "'>" + uniqCategories[i].Category + 
+		"</a><ul id='linkChild" + i + "' class='list-group collapse'>";
+
+		var categoryList = _.where(obj, {Category: uniqCategories[i].Category});
+		//console.log("categoryList.length: " + categoryList.length);
+
+		for (var j=0; j < categoryList.length; j++)
+		{
+			//console.log("categoryList.Id: " + categoryList[j].Id);
+			//console.log("List Name: " + categoryList[j].Listname);	
+			
+			var _id = uniqueNumber();
+			var _listName = categoryList[j].Listname.trim();
+			var _listId = categoryList[j].Id;
+			
+			var _type = categoryList[j].Type;
+			var _category = categoryList[j].Category;
+			var _grade = categoryList[j].GradeId;
+			
+			finalHTML = finalHTML + '<li onclick="listSelect(\''+_id+'\',\''+_listName+'\',\''+_listId + '\',\'' +_type+'\',\''+_category+'\',\''+_grade+'\');" id="' + _id + '" class="list-group-item list-group-item-success dummyListClass">' + categoryList[j].Listname + '</li>';	
+
+			//finalHTML = finalHTML + '<li data-wlcategory="' + categoryList[j].Category + ' data-wlist-type="' + categoryList[j].Type + '" onclick="listSelect(\''+_id+'\',\''+categoryList[j].Listname.trim()+'\',\''+categoryList[j].Id+'\');" id="' + _id + '" class="list-group-item list-group-item-success dummyListClass">' + categoryList[j].Listname + '</li>';							
+			
+		}						
+		
+		finalHTML = finalHTML + "</ul></li>";
+	}
+
+	//console.log("finalHTML: " + finalHTML);
+	//$('#wlaccordion').append(finalHTML);		
+
+	return finalHTML;
+}
+ 
+function listSelect(_id, _listName, _listId, _type, _category, _grade)	
+{
+	window.gILI = _listId;
+	window.listname = _listName;
+	window.grade = _grade;
+	window.category = _category;
+	
+	$('.dummyListClass').removeClass("list-group-item-danger");
+	$('.dummyListClass').addClass("list-group-item-success");
+	
+	$('#'+_id).removeClass("list-group-item-success");
+	$('#'+_id).addClass("list-group-item-danger");
+}
+	
+function playActivity(_actName)	
+{
+var gameURL = "";
+var modulenm = "";
+
+if(window.gILI === "")
+{
+	alert("Please select a Word List");
+	return false;
+}
+
+switch(_actName) {
+
+    case 'SpellingTest':
+        gameURL = 'SpellingTestGame/index.html';
+		modulenm = "Spelling Test";
+        break;
+    case 'FlashCards':
+        gameURL = 'FlashCardGame/index.html';
+		modulenm = "Flash Cards";
+        break;
+    case 'SpeedySpeller':
+        gameURL = 'SpeedySpeller/index.html';
+		modulenm = "Speed Speller";
+        break;
+    case 'WordJumble':
+        gameURL = 'WordJumble/index.html';
+		modulenm = "";
+        break;
+    case 'CrossWord':
+        gameURL = 'Crossword/index.html';
+		modulenm = "";
+        break;
+    case 'SpellingBee':
+        gameURL = 'SpellingBee/index.html';
+		modulenm = "Spelling Bee";
+        break;
+    case 'VocabularyBee':
+        gameURL = 'VocabularyBee/index.html';
+		modulenm = "Vocabulary Bee";
+        break;
+    case 'WordIntroduction':
+        gameURL = 'WordIntroduction/index.html';
+		modulenm = "Word Introduction";
+        break;
+    case 'WordSearch':
+        gameURL = 'WordSearch/index.html';
+		modulenm = "";
+        break;
+    case 'ViewList':
+        gameURL = 'ViewList/index.html';
+		modulenm = "";
+        break;
+}
+
+//gILI=242&userid=307&userfname=Debra&userlname=Marcion&listname=apostrophe
+//gameURL = gameURL + "?gILI=" + window.gILI + "&userid="+ window.userid +"&userfname=" + window.userfname + "&userlname" + window.userlname + "&listname=" + window.listname;
+
+gameURL = gameURL +"?type=playfree&gradetype="+window.grade+"&listname="+window.listname+"&category="+window.category+"&listid="+window.gILI+"&modulename="+modulenm;
+gameURL = gameURL +"&userid="+ window.userid +"&userfname=" + window.userfname + "&userlname" + window.userlname;
+
+var modalStr =
+  '<div class="modal" id="myGameModal" role="dialog"> ' +
+    '<div id="myGameModalDialog" class="modal-dialog modal-lg"> ' +
+      '<div id="myGameModalDialogContent" class="modal-content"> ' +
+        '<div class="modal-header"> ' +
+          '<button type="button" class="close" onclick="closeModal();">&times;</button> ' +
+          '<h4 class="modal-title">' + _actName + '</h4> ' +
+        '</div> ' +
+        '<div class="modal-body"> ' +
+		  '<!-- div class="embed-responsive embed-responsive-16by9" --> ' +
+		  '<div class="embed-responsive embed-responsive-4by3"> ' +
+			'<iframe class="embed-responsive-item" src="' + gameURL + '" frameborder="0" scrolling="no"></iframe> ' +
+		  '</div> ' +
+        '</div> ' +
+      '</div> ' +
+    '</div> ' +
+  '</div>';
+
+ $('#gameModalDiv').html(modalStr);						
+ $('#myGameModal').modal('toggle');
+}
+
+function showLoginDialog()
+{
+  if(loggedIn)
+  {
+	$('#wlaccordion').empty();	
+	getWordlist();
+	
+	$('#loginBtnImg').attr('src','img/login_new.png');
+	loggedIn = false;	
+  }
+ else
+ {
+	var strVar="";
+	strVar += "<div class=\"modal\" id=\"loginModal\" role=\"dialog\">";
+	strVar += "  <div class=\"modal-dialog modal-sm\">";
+	strVar += "";
+	strVar += "    <!-- Modal content-->";
+	strVar += "    <div class=\"modal-content\">";
+	strVar += "      <div class=\"modal-header\">";
+	strVar += "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;<\/button>";
+	strVar += "        <h4 class=\"modal-title\">Login<\/h4>";
+	strVar += "      <\/div>";
+	strVar += "      <div class=\"modal-body\">";
+	strVar += "    <div style=\"text-align: center; margin:0 auto;\">";
+	strVar += "         <label for=\"username\" id=\"loginUserLbl\">Username<\/label>";
+	strVar += "         <input type=\"text\" placeholder=\"Username\" id=\"loginUser\"\/><br>";
+	strVar += "         <label for=\"password\" id=\"loginPassLbl\">Password<\/label>";
+	strVar += "         <input type=\"password\" placeholder=\"Password\" id=\"loginPass\"\/>";
+	strVar += "    <\/div>";
+	strVar += "      <\/div>";
+	strVar += "      <div class=\"modal-footer\">";
+	strVar += "        <label for=\"loginCheckLbl\" id=\"loginCheckLbl\"><\/label>";
+	strVar += "        <button id=\"loginSubmit\" onclick=\"loginFunction()\" type=\"button\" class=\"btn btn-success\">Submit<\/button>";
+	strVar += "        <button id=\"loginCancel\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel<\/button>";
+	strVar += "      <\/div>";
+	strVar += "    <\/div>";
+	strVar += "";
+	strVar += "  <\/div>";
+	strVar += "<\/div>";
+
+	$('#loginModalDiv').html(strVar);						
+	$('#loginModal').modal('toggle');
+ }
+}
+
+function loginFunction()	
+{
+    $(".loaderModal").show();
+
+    var _url = "http://spellingclassroom.com/wp-admin/admin-ajax.php";
+	var emailId = $("#loginUser").val();
+	var passwd = $("#loginPass").val();	
+	var jsonData;
+	
+	$.post(_url, { action: "getUserData", email: emailId, pass: passwd }, function( _response ) {
+	
+	 console.log('response: ' + response);
+	 var response= jQuery.parseJSON(_response);
+	 
+	 if(response != "Invalid Username/ Password")
+	 {
+		 console.log('Login Successful');
+		 $("label[for='loginCheckLbl']").text("Success");
+		 //hideAds();
+		 
+		 if(response.roles == 'student')
+		 {
+			console.log('welcome Student');
+			
+			$.post(_url, { action: "getListItemsApp", id: response.userID}, function( _response ) {
+					console.log("**** Student Response: " + _response);
+					
+					closeLoginModal();
+					jsonData = _response;
+					
+					var finalHTML = processListJSON(jsonData);
+					var wlaccordionHTML = $('#wlaccordion').html();
+					$('#wlaccordion').empty();
+					$('#wlaccordion').append(finalHTML + wlaccordionHTML);				
+			});
+		 }
+		 else if(response.roles == 'teacher')
+		 {
+			console.log('welcome Teacher');
+
+			$.post(_url, { action: "getTeacherListItemsApp", id: response.userID}, function( _response ) {
+					console.log("**** Teacher Response: " + _response);
+					
+					closeLoginModal();
+					jsonData = _response;
+					
+					var finalHTML = processListJSON(jsonData);
+					var wlaccordionHTML = $('#wlaccordion').html();
+					$('#wlaccordion').empty();
+					$('#wlaccordion').append(finalHTML + wlaccordionHTML);				
+				});
+		 }//else if
+		 
+		 loggedIn = true;
+		 console.log("loggedIn Status: " + loggedIn);
+	 }
+	 else{
+		 console.log('Invalid Username/Password'); 
+		 $("label[for='loginCheckLbl']").text("Invalid Username/Password");
+		 loggedIn = false;
+		 //closeLoginModal();					 
+		 console.log("loggedIn Status: " + loggedIn);
+	 }
+	 
+	// {"userID":319,"email":"debraTest@bigiqkids.com","username":"debra","roles":"teacher","FirstName":"Debra","LastName":"Marcionette2","membership":"premium"}
+	window.userid = response.userID;
+	window.username = response.username;
+	window.userfname = response.FirstName;
+	window.userlname = response.LastName;
+	window.membership = response.membership;
+	console.log("membership: " + window.membership); 
+		
+	$('#loginBtnImg').attr('src','img/logout_new.png');	
+ });	
+}
+
+function closeModal()	
+{
+ $('#myGameModal').modal('toggle'); 
+  window.setTimeout(removeDivContent, 100);
+}
+
+function closeLoginModal()	
+{
+ $('#loginModal').modal('toggle'); 
+  window.setTimeout(removeLoginDivContent, 100);
+}
+
+function removeDivContent()
+{
+	$('#gameModalDiv').empty();
+}
+
+function removeLoginDivContent()
+{
+	$('#loginModalDiv').empty();
+    $(".loaderModal").hide();		
+}
+</script>	  
+	  
+</head>
+
+<body onload="getWordlist();">
+   
+<!-- Top Row - Images: START --> 
+     <div class="container" style="background-color: #3072c3; height: 100%; width: 100%;" >
+  
+        <div class="row">
+            
+          <div class="col-lg-5 col-xs-6" id="logoImg" style="padding-left: 0px;"><img id= "logo_img" src='img/mainLogo.png' class="img-responsive"> </img></div>
+              
+          <!--div class="col-lg-3 col-xs-4" style="padding-left: 0px;">
+                <p style="margin-top: 15%; color: rgb(255, 255, 255); font-style: italic;">Try it in 3 easy steps!</p>
+              
+              </div-->
+              
+          <div class="col-lg-4 col-xs-7 text-right" style="right:-260px; position: absolute;">
+              <a class="btn_ac quest" href="#" onclick="showimg()"><img src="img/i1.png" style="display: none;" class="img-responsive"></a>
+              <!-- a class="btn_ac logout" href="#"><img src='img/logout_new.png' class="img-responsive"></a -->
+              <a class="btn_ac login" href="#" onclick="showLoginDialog();"> <img src='img/login_new.png' style="margin-left:125px;margin-top:5px;" id="loginBtnImg" class="img-responsive"> </a>
+          </div>          
+          <div class="col"> </div>  
+        </div> 
+        <div class="clear" ></div>      
+<!-- Top Row - Images: END -->       
+                        
+<!-- Middle Row - Data Grids: START -->                      
+       <div class="row">
+		  <!-- Bootstrap: Start -->              
+              <!--
+              <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+               -->
+	      <!-- Bootstrap: End -->
+           <div class="col-sm-6" style="padding-top: 10px;">
+               <p style="font-family:Arial; color:white; font-size: 13px"><b>Step 1: Select a Word List</b></p>
+               <div class="item item-divider" style="background-color: #224264; font-family:Arial; color:#95e957;">
+			   <h3 class="main_titile" style="font-weight: bold; font-size:20px;text-align:center;">Word Lists</h3></div>
+				<!-- ion-scroll class="ion_list" direction="xy" style="width: 100%; height: 80%; background-color: white;" -->
+                <!-- wlaccordion></wlaccordion -->
+				
+				  <div id="left">
+					<!-- Word List Accordion -->
+					<ul class="nav nav-stacked" id="wlaccordion">
+						<!-- li class="panel"> <a data-toggle="collapse" data-parent="#wlaccordion" href="#firstLink">Test12</a>
+							<ul id="firstLink" class="collapse">
+								<li>SubTest1</li>
+								<li>SubTest1</li>
+								<li>SubTest1</li>
+							</ul>						  
+						</li -->
+					</ul>					  
+				  </div>   
+           </div>
+       
+			<div class="col-sm-6" style="padding-top: 10px;">
+				<p style="font-family:Arial; color:white; font-size: 13px"><b>Step 2: Select a Module</b></p>
+			  <div class="item item-divider" style="background-color: #224264; font-family: Arial; color:#95e957;">
+			  <h3 class="main_titile" style="font-weight: bold; font-size:20px; text-align:center;">Lessons & Tests</h3></div>
+			  
+				  <div id="right">				  
+  					<!-- Activity List Accordion -->
+					<ul class="nav nav-stacked" id="activityaccordion">
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("SpellingTest");' href="#SpellingTestActivity">Spelling Test</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("FlashCards");' href="#FlashCardsActivity">Flash Cards</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("SpeedySpeller");' href="#SpeedySpellerActivity">Speedy Speller</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("WordJumble");' href="#WordJumbleActivity">Word Jumble</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("CrossWord");' href="#CrossWordActivity">Cross Word</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("SpellingBee");' href="#SpellingBeeActivity">Spelling Bee</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("VocabularyBee");' href="#VocabularyBeeActivity">Vocabulary Bee</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("WordIntroduction");' href="#WordIntroductionActivity">Word Introduction</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("WordSearch");' href="#WordSearchActivity">Word Search</a>
+						</li>
+						<li class="panel">
+							<a data-toggle="collapse" data-parent="#activityaccordion" onclick='playActivity("ViewList");' href="#ViewListActivity">View List</a>
+						</li>
+					</ul>			  
+				  </div>
+           </div>
+		</div>
+           
+        <div class="clear"></div>  
+                		
+<!-- Middle Row - Data Grids: END -->                      
+      
+<!-- Bottom Row - Buttons: START -->      
+<div class="row" style="background-image: url(img/footer.png);height: 100px; bottom:0;margin-top:68px;" id="footerImg">
+  
+ <!--div class="col-100"-->
+              
+     <!--a class="btn_ac create" target="_blank" href="http://dev2.bigiqkids.com/teacher-signup/" style="padding-left:0px;"><img src="img/create_ac.png" alt="" class="img-responsive" id="selectable"></a> 
+     <a class="btn_ac login" href="#" ng-click="openDialog('sm');"><img src="img/login_btn.png" alt="" class="img-responsive"></a>
+     <a class="btn_ac quest" href="#" ng-click="open();"><img src="img/ques_btn.png" alt="" class="img-responsive"></a> 
+     
+ </div>
+            
+ <div class="col"></div>
+    
+ <div class="col-25 col-offset-20">
+     <a class="btn_ac go" href="#/spellinggame"><img src="img/lets_go.png" alt="" class="img-responsive" ></a>
+ </div -->
+    
+</div> 
+             
+<div class="clear"></div>  
+<!-- Bottom Row - Buttons: END -->      
+
+<div id="gameModalDiv"></div>
+<div id="loginModalDiv"></div>
+
+<div data-google-ad-sense></div>
+
+<div class="loaderModal" style="display: none">
+    <div class="loaderCenter">
+        <img alt="" src="img/loader.gif" />
+    </div>
+</div>
+
+</body>
+</html>

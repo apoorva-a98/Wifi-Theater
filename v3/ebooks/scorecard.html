@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Scorecard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <script src="js/jquery-3.1.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$( document ).ready(function() 
+{
+//Exercises Check: Start  
+  //Book 1
+  if(localStorage.getItem("submit_b1p8q1") && localStorage.getItem("submit_b1p8q3") && localStorage.getItem("submit_b1p9q1"))  
+  {
+    console.log('Book1 Exercises Completed');
+    localStorage.setItem("b1ExercisesCompleted", "done");
+    $('#book1Exercises').text('Complete');
+  }
+  else
+  {
+    console.log('Book1 Exercises Incomplete');
+    $('#book1Exercises').text('Incomplete');
+  }
+
+  //Book 2
+  if(localStorage.getItem("submit_b2p5q1") && localStorage.getItem("submit_b2p5q2") && localStorage.getItem("submit_b2p6q1"))  
+  {
+    console.log('Book2 Exercises Completed');
+    localStorage.setItem("b2ExercisesCompleted", "done");
+    $('#book2Exercises').text('Complete');    
+  }
+  else
+  {
+    console.log('Book2 Exercises Incomplete');
+    $('#book2Exercises').text('Incomplete');    
+  }
+
+  //Book 3
+  if(localStorage.getItem("submit_b3p7q1") && localStorage.getItem("submit_b3p7q2") && localStorage.getItem("submit_b3p8q1"))  
+  {
+    console.log('Book3 Exercises Completed');
+    localStorage.setItem("b3ExercisesCompleted", "done");
+    $('#book3Exercises').text('Complete');    
+  }
+  else
+  {
+    console.log('Book3 Exercises Incomplete');
+    $('#book3Exercises').text('Incomplete');        
+  }
+
+  //Book 4
+  if(localStorage.getItem("submit_b4p7q1") && localStorage.getItem("submit_b4p7q2") && localStorage.getItem("submit_b4p8q1"))  
+  {
+    console.log('Book4 Exercises Completed');
+    localStorage.setItem("b4ExercisesCompleted", "done");
+    $('#book4Exercises').text('Complete');    
+  }
+  else
+  {
+    console.log('Book4 Exercises Incomplete');
+    $('#book4Exercises').text('Incomplete');        
+  }
+
+  //Book 5
+  if(localStorage.getItem("submit_b5p7q1") && localStorage.getItem("submit_b5p7q2") && localStorage.getItem("submit_b5p8q1"))  
+  {
+    console.log('Book5 Exercises Completed');
+    localStorage.setItem("b5ExercisesCompleted", "done");
+    $('#book5Exercises').text('Complete');        
+  }
+  else
+  {
+    console.log('Book5 Exercises Incomplete');
+    $('#book5Exercises').text('Incomplete');            
+  }
+
+  //Book 6
+  if(localStorage.getItem("submit_b6p10q1") && localStorage.getItem("submit_b6p10q2") && localStorage.getItem("submit_b6p11q1"))  
+  {
+    console.log('Book6 Exercises Completed');
+    localStorage.setItem("b6ExercisesCompleted", "done");
+    $('#book6Exercises').text('Complete');
+  }
+  else
+  {
+    console.log('Book6 Exercises Incomplete');
+    $('#book6Exercises').text('Incomplete');
+  }
+//Exercises Check: End
+
+//Progress Check: Start
+  if(localStorage.getItem("Book1Complete"))  
+  {
+    console.log('Book1 Completed');
+    $('#book1Completion').text('Complete');
+  }
+  else
+  {
+    console.log('Book1 Incomplete');
+    $('#book1Completion').text('Incomplete');
+  }
+
+  if(localStorage.getItem("Book2Complete"))  
+  {
+    console.log('Book2 Completed');
+    $('#book2Completion').text('Complete');
+  }
+  else
+  {
+    console.log('Book2 Incomplete');
+    $('#book2Completion').text('Incomplete');
+  }
+
+  if(localStorage.getItem("Book3Complete"))  
+  {
+    console.log('Book3 Completed');
+    $('#book3Completion').text('Complete');
+  }
+  else
+  {
+    console.log('Book3 Incomplete');
+    $('#book3Completion').text('Incomplete');
+  }
+
+  if(localStorage.getItem("Book4Complete"))  
+  {
+    console.log('Book4 Completed');
+    $('#book4Completion').text('Complete');
+  }
+  else
+  {
+    console.log('Book4 Incomplete');
+    $('#book4Completion').text('Incomplete');
+  }
+
+  if(localStorage.getItem("Book5Complete"))  
+  {
+    console.log('Book5 Completed');
+    $('#book5Completion').text('Complete');
+  }
+  else
+  {
+    console.log('Book5 Incomplete');
+    $('#book5Completion').text('Incomplete');
+  }
+
+  if(localStorage.getItem("Book6Complete"))  
+  {
+    console.log('Book6 Completed');
+    $('#book6Completion').text('Complete');
+  }
+  else
+  {
+    console.log('Book6 Incomplete');
+    $('#book6Completion').text('Incomplete');
+  }
+
+});
+</script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+<div class="row">
+  <!-- Books 1 to 3 -->
+  <!-- div class="col-md-6" -->
+  <div class="col-md-10 col-md-offset-1">  
+    <!-- Your first column here -->
+
+  <table class="table">
+    <thead>
+      <tr class="danger">
+        <th>Book Name</th>
+        <th>Feature</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    <!-- Book 1 -->
+      <tr class="info">
+        <td>A Good Loser</td>
+        <td>Completion</td>
+        <td id="book1Completion"></td>
+      </tr>      
+      <tr class="active">
+        <td></td>
+        <td>Exercises</td>
+        <td id="book1Exercises"></td>
+      </tr>
+
+    <!-- Book 2 -->
+      <tr class="info">
+        <td>Billy Beaver</td>
+        <td>Completion</td>
+        <td id="book2Completion"></td>
+      </tr>
+      <tr class="active">
+        <td></td>
+        <td>Exercises</td>
+        <td id="book2Exercises"></td>
+      </tr>
+
+    <!-- Book 3 -->
+      <tr class="info">
+        <td>The New Girl</td>
+        <td>Completion</td>
+        <td id="book3Completion"></td>
+      </tr>
+      <tr class="active">
+        <td></td>
+        <td>Exercises</td>
+        <td id="book3Exercises"></td>
+      </tr>
+
+    <!-- Book 4 -->
+      <tr class="info">
+        <td>Malala Yousafzai</td>
+        <td>Completion</td>
+        <td id="book4Completion"></td>
+      </tr>
+      <tr class="active">
+        <td></td>
+        <td>Exercises</td>
+        <td id="book4Exercises"></td>
+      </tr>
+
+    <!-- Book 5 -->
+      <tr class="info">
+        <td>The Big Sister Blues</td>
+        <td>Completion</td>
+        <td id="book5Completion"></td>
+      </tr>
+      <tr class="active">
+        <td></td>
+        <td>Exercises</td>
+        <td id="book5Exercises"></td>
+      </tr>
+
+    <!-- Book 6 -->
+      <tr class="info">
+        <td>Discovering the roots</td>
+        <td>Completion</td>
+        <td id="book6Completion"></td>
+      </tr>
+      <tr class="active">
+        <td></td>
+        <td>Exercises</td>
+        <td id="book6Exercises"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+    </div>
+
+  </div>
+ 
+</div>
+
+</body>
+</html>

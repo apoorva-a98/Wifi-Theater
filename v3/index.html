@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WiFi Theatre</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/classie.js"></script>
+  
+  <style>
+  .textStyle {
+    word-wrap: break-word;
+    display:inline-block;
+  }
+
+  .cbp-spmenu {
+background: #47a3da;
+position: fixed;
+}
+.cbp-spmenu h3 {
+color: #afdefa;
+font-size: 1.9em;
+padding: 20px;
+margin: 0;
+font-weight: 300;
+background: #0d77b6;
+}
+.cbp-spmenu a {
+display: block;
+color: #fff;
+font-size: 1.1em;
+font-weight: 300;
+}
+.cbp-spmenu a:hover {
+background: #258ecd;
+}
+.cbp-spmenu a:active {
+background: #afdefa;
+color: #47a3da;
+}
+
+.cbp-spmenu-vertical {
+width: 240px;
+height: 100%;
+top: 0;
+z-index: 1000;
+}
+.cbp-spmenu-vertical a {
+border-bottom: 1px solid #258ecd;
+padding: 1em;
+}
+
+.cbp-spmenu-left {
+left: -240px;
+}
+.cbp-spmenu-left.cbp-spmenu-open {
+left: 0px;
+}
+
+.cbp-spmenu, .cbp-spmenu-push {
+-webkit-transition: all 0.3s ease;
+-moz-transition: all 0.3s ease;
+transition: all 0.3s ease;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+<h3>
+  <a href="http://www.jqueryscript.net/menu/">Menu</a>
+</h3>
+<a href="#" id="moviesSectionMenu">Movies</a>
+<a href="#" id="musicSectionMenu">Music</a>
+<a href="#" id="booksSectionMenu">Books</a>
+<a href="#" id="gamesSectionMenu">Games</a>
+</nav>
+
+<!-- div class="jumbotron text-center" -->
+<div class="mark text-center">
+  <button id="showLeft" class="btn pull-right"><img src="images/menu.png" style="width: 30px; height: 30px;"/></button>  
+
+  <h1>WiFi Theater</h1>
+  <!-- p>Resize this responsive page to see the effect!</p -->
+</div>
+  
+<div class="container">
+ 
+<!-- Video Row Start -->  
+  <div class="row" id="moviesSection">
+    <div class="col-xs-6 col-sm-3">
+      <h3 class="text-left">Movie 1</h3>
+	    <img src="images/1.png" onclick="playMovie('1');" id="movie1" class="img-rounded" style="cursor:pointer;" "width="100" height="100"></img>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Movie 2</h3>
+	  <img src="images/2.png" onclick="playMovie('2');" id="movie2" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Movie 3</h3>
+	  <img src="images/3.png" onclick="playMovie('3');" id="movie3" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Movie 4</h3>
+	  <img src="images/4.png" onclick="playMovie('4');" id="movie4" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+  </div>
+<!-- Video Row End -->
+
+<div class="row">
+  <div class="mark text-center">
+    <h1>WiFi Audio</h1>
+  </div>
+</div>
+
+<!-- Audio Row Start -->
+  <div class="row" id="musicSection">
+    <div class="col-xs-6 col-sm-3">
+      <h3>Hit Song 1</h3>
+	    <img src="images/4.png" onclick="playAudio('1');" id="audio1" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Hit Song 2</h3>
+	    <img src="images/5.png" onclick="playAudio('2');" id="audio2" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Hit Song 3</h3>
+	    <img src="images/6.png" onclick="playAudio('3');" id="audio3" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Hit Song 4</h3>
+	    <img src="images/7.png" onclick="playAudio('4');" id="audio4" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+  </div>
+<!-- Audio Row End -->
+
+<!-- eBooks Row Start -->
+<div class="row">
+  <div class="mark text-center">
+    <h1>WiFi eBooks</h1>
+  </div>
+</div>
+
+  <div class="row" id="booksSection">
+    <div class="col-xs-6 col-sm-3">
+      <h3>eBook 1</h3>
+	    <img src="images/1.png" onclick="showBook('1');" id="ebook1" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>eBook 2</h3>
+	  <img src="images/2.png" onclick="showBook('2');" id="ebook2" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>eBook 3</h3>
+	  <img src="images/3.png" onclick="showBook('3');" id="ebook3" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>eBook 4</h3>
+	  <img src="images/4.png" onclick="showBook('4');" id="ebook4" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+  </div>
+<!-- eBooks Row End -->
+
+<!-- Games Row Start -->
+<div class="row">
+  <div class="mark text-center">
+    <h1>WiFi Games</h1>
+  </div>
+</div>
+
+  <div class="row" id="gamesSection">
+    <div class="col-xs-6 col-sm-3">
+      <h3>Game 1</h3>
+	    <img src="images/1.png" onclick="playGame('forklift');" id="game1" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Game 2</h3>
+	  <img src="images/2.png" onclick="playGame('horseracing');" id="game2" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Game 3</h3>
+	  <img src="images/3.png" onclick="playGame('forklift');" id="game3" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+      <h3>Game 4</h3>
+	  <img src="images/4.png" onclick="playGame('horseracing');" id="game4" class="img-rounded" style="cursor:pointer;" width="100" height="100"></img> <br>
+      <p class="small text-left textStyle">Lorem ipsum dolor sit amet, consectetur</p>
+    </div>
+  </div>
+
+<!-- Games Row Start -->
+<div class="row">
+  <div class="mark text-center">
+    <h1></h1>
+  </div>
+</div>
+  
+</div>
+
+<script>
+
+jQuery(document).ready(function () {    
+
+var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+body = document.body;
+showLeft = document.getElementById( 'showLeft' );
+
+showLeft.onclick = function() {
+  classie.toggle( this, 'active' );
+  classie.toggle( menuLeft, 'cbp-spmenu-open' );
+  disableOther( 'showLeft' );
+};
+
+function disableOther( button ) {
+  if( button !== 'showLeft' ) {
+    classie.toggle( showLeft, 'disabled' );
+ }
+}
+
+moviesSectionMenu = document.getElementById( 'moviesSectionMenu' );
+musicSectionMenu = document.getElementById( 'musicSectionMenu' );
+booksSectionMenu = document.getElementById( 'booksSectionMenu' );
+gamesSectionMenu = document.getElementById( 'gamesSectionMenu' );
+
+moviesSectionMenu.onclick = function() {
+  classie.toggle( this, 'active' );
+  classie.toggle( menuLeft, 'cbp-spmenu-open' );
+  disableOther( 'showLeft' );
+
+  $("html, body").animate({ scrollTop: $("#moviesSection").offset().top }, 500);
+};
+
+musicSectionMenu.onclick = function() {
+  classie.toggle( this, 'active' );
+  classie.toggle( menuLeft, 'cbp-spmenu-open' );
+  disableOther( 'showLeft' );
+
+  $("html, body").animate({ scrollTop: $("#musicSection").offset().top }, 500);
+};
+
+booksSectionMenu.onclick = function() {
+  classie.toggle( this, 'active' );
+  classie.toggle( menuLeft, 'cbp-spmenu-open' );
+  disableOther( 'showLeft' );
+
+  $("html, body").animate({ scrollTop: $("#booksSection").offset().top }, 500);
+};
+
+gamesSectionMenu.onclick = function() {
+  classie.toggle( this, 'active' );
+  classie.toggle( menuLeft, 'cbp-spmenu-open' );
+  disableOther( 'showLeft' );
+
+  $("html, body").animate({ scrollTop: $("#gamesSection").offset().top }, 500);
+};
+
+});//ready
+
+function playMovie(_movieName)
+{
+    localStorage.setItem("MovieName", _movieName);
+    //localStorage.setItem("MoviePoster", _movieName);
+  document.location.href = "vplayer.html";         
+}
+
+function playAudio(_audioName)
+{
+    localStorage.setItem("AudioName", _audioName);
+    //localStorage.setItem("AudioPoster", _movieName);
+  document.location.href = "aplayer.html";         
+}
+
+function playGame(_gameName)
+{
+    document.location.href = "games/" + _gameName;         
+}
+
+function showBook(_bookName)
+{
+    document.location.href = "ebooks/book" + _bookName + "/index.html";         
+}
+
+</script>
+
+</body>
+</html>

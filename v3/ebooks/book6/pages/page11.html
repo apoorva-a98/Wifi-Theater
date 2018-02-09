@@ -1,0 +1,86 @@
+<style>
+    .quespage{
+        /*background:url(../../samples/pages/2.jpg);*/
+        background-size: 100% 100%;
+       // background-image: -webkit-linear-gradient(left, rgba(0,0,0,0) 95%, rgba(0,0,0,0.2) 100%);
+        position: absolute;
+        top:0;
+        right:0;
+        left:0;
+        bottom:0;
+    }
+    .ques{
+        position: absolute;
+        top: 35px;
+        right: 0px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .submitbtn{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .btn-default1{
+        color: #FFF;
+        background-color: #FF7648;
+        border-color: #ccc;
+        font-size: 18px;
+    }
+    .btn-save1{
+        color: #FFF;
+        background-color: green;
+        border-color: #ccc;
+    }
+    textarea {
+        resize: none;
+    }
+    .error-msg{
+        color:#d40924;
+    }
+    .success-msg{
+        color:#4cae4c;
+    }
+    .question_text{
+        font-size: 150%;
+        font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+        color:#000;
+    }
+	
+</style>
+<div class="container-fluid quespage" style="background-color: #FEF7EB;">
+    <div class="col-lg-12 ques" id="bookQuestion">
+        <h3>Question:</h3>
+        <!-- All Question append here -->
+		
+		<div class="row" style="height:'+height+'px">
+		   <div class="col-md-12">
+				<p class="bold question_text">Why do you think Tim asked his parents to take Chinese lessons on the car ride home?</p>
+		   </div>
+		   <div class="col-md-12 ">
+				<textarea class="form-control" id="b6p11a1" rows="" style="height:166px;width: 100%;"></textarea>
+		   </div>
+		   <div class="col-md-12 submitbtn">
+				<div class="col-md-9">
+					<p class="error-msg" id="error_1"></p>
+					<p class="success-msg" id="success_1"></p>
+				</div>
+				<div class="col-md-3">
+                    <button type="button" id="submit_b6p11q1" class="btn pull-right btn-default1">Submit</button>
+				</div>
+		   </div>
+	   </div>
+	   </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+
+    $( "#submit_b6p11q1" ).click(function() {
+      localStorage.setItem("submit_b6p11q1", $('#b6p11a1').val());
+      $("#submit_b6p11q1").text('Saved').removeClass('btn-default1').addClass('btn-save1');
+      setTimeout(function(){ $("#submit_b6p11q1").text('Submit').removeClass('btn-save1').addClass('btn-default1');}, 3000);
+    });
+
+});
+</script>   

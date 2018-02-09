@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<!-- https://sg2nlsmysqladm1.secureserver.net/grid55/41/index.php -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" -->
+
+    <title>Cubby v1</title>
+    
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/demo.css" rel="stylesheet" >
+    <link href="css/page.css" rel="stylesheet"/>
+    <link href="css/portBox.css" rel="stylesheet" />
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/featherlight.css" rel="stylesheet"/>
+    <link href="css/animate.css" rel="stylesheet"/>
+
+<style type="text/css">
+    #nav.js {
+        display: none;
+        position:absolute;
+    }
+    ul {
+        width:100%;        
+    }
+    li {
+        width:100%;
+        border-right:none;
+    }
+    #nav {
+        width: 100px;
+    }
+    #menuLI{
+        width: 100px;
+    }
+    #navMenu{
+        position: absolute;
+        margin-top: 30px;
+        margin-left: 5px;
+        z-index: 10;
+    }
+    #logoutDiv {
+        display: none;
+        position: absolute;
+        left: 210px;
+        top: 50px;
+        z-index: 1;        
+    }
+</style>
+</head>
+
+<body style="background-color: #ecc381;">
+
+<div class="loading">
+    <div class="loader"><img src="images/themeloader.gif" alt=""/></div>
+</div>
+
+<div id='navMenu'>
+    <ul id="nav">
+        <div id="menuLI">
+        <li><a href="#" id="sbDialogOpener" onclick="showScorecard();"><dt><mark>Scoreboard</mark></dt></a></li> 
+        <!-- li><a href="#" id="logoutBtn" onclick="logout();"><dt><mark>Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark></dt></a></li --> 
+        <li><a href="#" id="tncBtn" onclick="showTnC();"><dt><mark>T & C &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark></dt></a></li> 
+        </div>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="banner">
+        <div class="row" id="topics">
+            <!-- div class="col-lg-12" style="margin-top: 110px;" -->
+            <div class="col-lg-12" style="margin-top: 0px;">
+                <div class="col-lg-12"  style="background:url(images/1shelfbg.jpg);background-size:100% 100%;" >
+                    <div class="block" id="firstshelf" style="padding-bottom: 0; margin-left: 190px;">
+                        <ul style="margin:20px auto;display: inline-flex; list-style-type: none;">
+                            <li class="shelf">
+                                <a data-display="empty1" class="initialism ">
+                                    <span >
+                                        <img id="book1" src="images/Book1.png" class="img-responsive" />
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="shelf">
+                                <a data-display="empty3" class="initialism ">
+                                    <span >
+                                        <img id="book2" src="images/Book2.png" class="img-responsive" />
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="shelf">
+                                <a data-display="empty2" class="initialism ">
+                                    <span >
+                                        <img id="book3" src="images/Book3.png" class="img-responsive" />
+                                    </span>
+                                </a>
+                            </li>
+                           <!--  <li class="shelf"><a data-display="empty4" class="initialism "><span ><img  src="bookshelf/assets/images/thumnail4.png" class="img-responsive" /></span></a></li> --> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12"  style="background:url(images/1shelfbg.jpg);background-size:100% 100%;" >
+                    <div class="block" id="firstshelf" style="padding-bottom: 0; margin-left: 190px;">
+                        <ul style="margin:20px auto;display: inline-flex; list-style-type: none;">
+                            <li class="shelf">
+                                <a data-display="empty5" class="initialism ">
+                                    <span >
+                                        <img id="book4" src="images/Book4.png" class="img-responsive" />
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="shelf">
+                                <a data-display="empty6" class="initialism ">
+                                    <span >
+                                        <img id="book5" src="images/Book5.png" class="img-responsive" />
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="shelf">
+                                <a data-display="empty7" class="initialism ">
+                                    <span >
+                                        <img id="book6" src="images/Book6.png" class="img-responsive" />
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div id="empty1" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book1/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty3" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book2/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty2" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book3/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+   <!--  <div id="empty4" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="bookshelf/pages/samples/book4/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div> -->
+    <div id="empty5" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book4/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty6" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book5/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div id="empty7" class="portBox" style="width: 100%;">
+        <iframe class="lightbox" data-src="book6/index.html" width="100%" height="100%" id="B001" style="border:none;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+</div>
+
+<div id='registrationModalDiv'></div>
+<div id='loginModalDiv'></div>
+<div id='scorecardModalDiv'></div>
+<div id='tncModalDiv'></div>
+<div id="purchaseModalDiv"></div>
+
+<div id='logoutDiv'>
+    <div class="alert alert-danger">
+        <a href="#" onclick="closeLogoutAlert();" class="close" data-dismiss="alert">&times;</a>
+        <strong>Logged Out! &nbsp;&nbsp;</strong>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- script src="js/jquery-1.9.1.js"></script -->
+<script type="text/javascript" src="cordova.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="js/common.js"></script>
+
+<script type="text/javascript">
+var productsDisplay = "";
+
+function loadProducts()
+{
+    if(localStorage.getItem("cubbyPurchase") != "done")
+    {
+        $('#book2').css('opacity', '0.4');
+        $('#book3').css('opacity', '0.4');
+        $('#book4').css('opacity', '0.4');
+        $('#book5').css('opacity', '0.4');
+        $('#book6').css('opacity', '0.4');
+/*
+      $('#book1').addClass('animated bounceInLeft');
+      $('#book2').addClass('animated bounceInDown');
+      $('#book3').addClass('animated bounceInRight');
+      $('#book4').addClass('animated bounceInLeft');
+      $('#book5').addClass('animated bounceInDown');
+      $('#book6').addClass('animated bounceInRight');
+*/
+
+      $('#book1').addClass('animated bounce');
+      $('#book2').addClass('animated bounce');
+      $('#book3').addClass('animated bounce');
+      $('#book4').addClass('animated bounce');
+      $('#book5').addClass('animated bounce');
+      $('#book6').addClass('animated bounce');
+
+        var productId = ["com.thrivykids.app.ios.cubby.product"];
+
+         inAppPurchase
+          .getProducts(productId)
+          .then(function (products) {
+            /*
+            {
+                productId: "com.thrivykids.app.ios.cubby.product", title: "Chubby Purchase", description: "Chubby Purchase", price: "₹ 250.00"
+            }
+            */
+            console.log("Products: " + products);
+
+            $.each(products, function(key, value) {
+              productsDisplay = productsDisplay + "<button type='button' class='btn btn-warning' onclick=\"purchaseFunction('" + value.productId + "');\">" + value.title + "</button>";
+            });     
+
+          })
+          .catch(function (err) {
+            console.log(err);
+          });   
+    }
+    else
+    {
+        $('#book2').css('opacity', '1');
+        $('#book3').css('opacity', '1');
+        $('#book4').css('opacity', '1');
+        $('#book5').css('opacity', '1');
+        $('#book6').css('opacity', '1');
+    }
+}
+
+function showPurchaseDialog()
+{
+    var strVar="";
+    strVar += "<div class=\"modal\" id=\"purchaseModal\" role=\"dialog\">";
+    strVar += "  <div class=\"modal-dialog modal-lg\">";
+    strVar += "";
+    strVar += "    <!-- Modal content-->";
+    strVar += "    <div class=\"modal-content\">";
+    strVar += "      <div class=\"modal-header\">";
+    strVar += "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;<\/button>";
+    strVar += "        <h4 class=\"modal-title\">Purchase Cubby Paid Modules<\/h4>";
+    strVar += "      <\/div>";
+    strVar += "      <div class=\"modal-body\">";
+    strVar += "    <div style=\"text-align: center; margin:0 auto;\">";
+/*
+    strVar += "         <label for=\"username\" id=\"loginUserLbl\">Username<\/label>";
+    strVar += "         <input type=\"text\" placeholder=\"Username\" id=\"loginUser\"\/><br>";
+    strVar += "         <label for=\"password\" id=\"loginPassLbl\">Password<\/label>";
+    strVar += "         <input type=\"password\" placeholder=\"Password\" id=\"loginPass\"\/>";
+*/    
+    strVar += productsDisplay;
+    strVar += "    <\/div>";
+    strVar += "      <\/div>";
+    strVar += "      <div class=\"modal-footer\">";
+    strVar += "        <label for=\"loginCheckLbl\" id=\"loginCheckLbl\"><\/label>";
+    strVar += "        <!-- button id=\"purchaseSubmit\" onclick=\"purchaseFunction()\" type=\"button\" class=\"btn btn-success\">Purchase<\/button -->";
+    strVar += "        <button id=\"purchaseCancel\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel<\/button>";
+    strVar += "      <\/div>";
+    strVar += "    <\/div>";
+    strVar += "";
+    strVar += "  <\/div>";
+    strVar += "<\/div>";
+
+    $('#purchaseModalDiv').html(strVar);                       
+    $('#purchaseModal').modal('toggle');
+}
+
+function purchaseFunction(productId)
+{
+    inAppPurchase
+      .buy(productId)
+      .then(function (data) {
+        console.log(JSON.stringify(data));
+        // The consume() function should only be called after purchasing consumable products
+        // otherwise, you should skip this step
+        //return inAppPurchase.consume(data.type, data.receipt, data.signature);
+      })
+      .then(function () {
+        console.log('consume done!');
+        localStorage.setItem("cubbyPurchase", "done");
+      })
+      .catch(function (err) {
+        console.log(err);        
+      });    
+}
+
+function onDeviceReady() {
+    console.log("In onDeviceReady");
+}
+</script>
+
+<!-- script>
+    $('.portBox').hide();
+    $('.shelf').click(function(event){
+        $('.loading').fadeIn();
+        var divName = $(event.target).parent().parent().data('display');
+        $('#'+divName).show();
+        $('#'+divName).children().prop("src",function(){
+            return $(this).data('src');
+        });
+        $('#'+divName).children().on('load', function () {
+            $('.loading').fadeOut();
+        });
+    });
+</script -->
+
+<script type="text/javascript">
+
+    $('.portBox').hide();
+
+    $('.shelf').click(function(event) {
+        var divName = $(event.target).parent().parent().data('display');
+
+        if(divName === "empty2" || divName === "empty3" || divName === "empty5" || divName === "empty6" || divName === "empty7")
+        {
+            //for testing
+            localStorage.setItem("cubbyPurchase", "done");
+               
+            if(localStorage.getItem("cubbyPurchase") != "done")
+            {
+                showPurchaseDialog();
+            }
+            else
+            {
+                $('.loading').fadeIn();
+                $('#'+divName).show();
+                $('#'+divName).children().prop("src",function(){
+                    return $(this).data('src');
+                });
+                $('#'+divName).children().on('load', function () {
+                    $('.loading').fadeOut();
+                });
+            }        
+        }
+        else
+        {
+            $('.loading').fadeIn();
+            $('#'+divName).show();
+            $('#'+divName).children().prop("src",function(){
+                return $(this).data('src');
+            });
+            $('#'+divName).children().on('load', function () {
+                $('.loading').fadeOut();
+            });
+        }        
+    });
+
+</script>
+
+
+<!------ Menu : Start-------->
+<script type="text/javascript">
+    //$("#nav").addClass("js").before('<div id="menu">&#9776;&#9776;&#9776;</div>');
+    $("#nav").addClass("js").before('<div id="menu"><img id="menuImg" src="images/menu.png" style="width:10%"/></div>');
+
+    $("#menu").click(function() {
+        $("#nav").toggle();
+    });
+    $(window).resize(function(){
+        if(window.innerWidth > 768) {
+            $("#nav").removeAttr("style");
+        }
+    });
+</script>
+<!------ Menu : End -------->
+
+<style type="text/css">
+#registrationUserLbl, #registrationUserPassLbl, #emailLbl, #loginUserLbl, #loginPassLbl {
+    padding-right: 10px;
+    color: blue;
+    text-align: left; 
+}
+</style>
+
+<script type="text/javascript">
+
+function showTnC()
+{
+var modalStr =
+  '<div class="modal" id="tncModal" role="dialog"> ' +
+    '<div id="tncModalDialog" class="modal-dialog"> ' +
+      '<div id="tncModalDialogContent" class="modal-content"> ' +
+        '<div class="modal-header"> ' +
+          //'<button type="button" class="close" onclick="closeModal();" style="font-size: 35px;">&times;</button> ' +
+            '<button type=\"button\" class=\"close\" data-dismiss=\"modal\" style=\"font-size: 35px;\">&times;<\/button>' +
+          '<h4 class="modal-title">Terms and Conditions</h4> ' +
+        '</div> ' +
+        '<div class="modal-body"> ' +
+          '<div class="embed-responsive embed-responsive-16by9"> ' +
+          //'<div class="embed-responsive embed-responsive-4by3"> ' +
+            '<iframe class="embed-responsive-item" src="tnc.html" frameborder="0" scrolling="no"></iframe> ' +
+          '</div> ' +
+        '</div> ';
+
+    var strVar = "      <div class=\"modal-footer\">";
+    strVar += "        <button id=\"sbCancel\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Close<\/button>";
+    strVar += "      <\/div>";
+
+    modalStr = modalStr + strVar;
+    modalStr = modalStr +  '</div> ' +
+                        '</div> ' +
+                      '</div>';
+
+    //Model Positioning Fix: START
+    //if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+
+    $('#tncModal').on('hide.bs.modal', function (e) {
+        console.log('hide.bs.modal event fired');
+    });
+
+    $('#tncModal').on('show.bs.modal', function(e) {
+        console.log('Modal Show Called');
+
+        // Position modal absolute and bump it down to the scrollPosition
+        $(this)
+            .css({
+                position: 'absolute',
+            });
+        setTimeout( function() {
+            $('.modal-backdrop').css({
+                position: 'absolute'
+            });
+        }, 0);
+    });
+    //Model Positioning Fix: END      
+  
+ $('#tncModalDiv').html(modalStr);                     
+ $('#tncModal').modal('toggle');
+}
+
+function showScorecard()
+{
+var modalStr =
+  '<div class="modal" id="scorecardModal" role="dialog"> ' +
+    '<div id="scorecardModalDialog" class="modal-dialog modal-lg"> ' +
+      '<div id="scorecardModalDialogContent" class="modal-content"> ' +
+        '<div class="modal-header"> ' +
+          //'<button type="button" class="close" onclick="closeModal();" style="font-size: 35px;">&times;</button> ' +
+            '<button type=\"button\" class=\"close\" data-dismiss=\"modal\" style=\"font-size: 35px;\">&times;<\/button>' +
+          '<h4 class="modal-title">Score card</h4> ' +
+        '</div> ' +
+        '<div class="modal-body"> ' +
+          '<div class="embed-responsive embed-responsive-16by9"> ' +
+          //'<div class="embed-responsive embed-responsive-4by3"> ' +
+            '<iframe class="embed-responsive-item" src="scorecard.html" frameborder="0" scrolling="no"></iframe> ' +
+          '</div> ' +
+        '</div> ';
+
+    var strVar = "      <div class=\"modal-footer\">";
+    strVar += "        <label for=\"sbCheckLbl\" id=\"sbCheckLbl\"><\/label>";
+    //strVar += "        <button id=\"loginSubmit\" onclick=\"loginFunction()\" type=\"button\" class=\"btn btn-success\">Submit<\/button>";
+    strVar += "        <button id=\"sbCancel\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Close<\/button>";
+    strVar += "      <\/div>";
+
+    modalStr = modalStr + strVar;
+
+    modalStr = modalStr +  '</div> ' +
+                        '</div> ' +
+                      '</div>';
+
+    //Model Positioning Fix: START
+    //if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+
+    $('#scorecardModal').on('hide.bs.modal', function (e) {
+        console.log('hide.bs.modal event fired');
+    });
+
+    $('#scorecardModal').on('show.bs.modal', function(e) {
+        console.log('Modal Show Called');
+
+        // Position modal absolute and bump it down to the scrollPosition
+        $(this)
+            .css({
+                position: 'absolute',
+            });
+        setTimeout( function() {
+            $('.modal-backdrop').css({
+                position: 'absolute'
+            });
+        }, 0);
+    });
+    //Model Positioning Fix: END      
+  
+ $('#scorecardModalDiv').html(modalStr);                     
+ $('#scorecardModal').modal('toggle');
+}
+
+function showRegistrationDialog()
+{
+    var strVar="";
+    strVar += "<div class=\"modal\" id=\"registrationModal\" role=\"dialog\">";
+    strVar += "  <div class=\"modal-dialog modal-sm\">";
+    strVar += "    <div class=\"modal-content\">";
+    strVar += "      <div class=\"modal-header\">";
+    strVar += "        <!-- button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;<\/button -->";
+    strVar += "        <h4 class=\"modal-title\">Registration<\/h4>";
+    strVar += "      <\/div>";
+
+    strVar += "<div class=\"modal-body\">";
+    strVar += "<form id=\"registrationForm\" class=\"form-horizontal\">";
+
+    strVar += "<div class=\"input-group\">";
+    strVar += "<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>";
+    strVar += "<input required id=\"registrationUsername\" type=\"text\" class=\"form-control\" name=\"username\" placeholder=\"Username\">";
+    strVar += "</div>";
+
+    strVar += "<div class=\"input-group\" >";
+    strVar += "<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-apple\"></i></span>";
+    strVar += "<input data-validation=\"email\" id=\"registrationEmail\" type=\"text\" class=\"form-control\" name=\"email\" placeholder=\"Email\">";
+    strVar += "<\/div>";
+
+    strVar += "<div class=\"input-group\" >";
+    strVar += "<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-apple\"></i></span>";
+    strVar += "<input data-validation=\"number\" id=\"registrationAge\" type=\"text\" class=\"form-control\" name=\"age\" placeholder=\"Age\">";
+    strVar += "<\/div>";
+
+    strVar += "<div class=\"input-group\" >";
+    strVar += "<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-leaf\"></i></span>";
+    strVar += "<input required id=\"registrationGender\" type=\"text\" class=\"form-control\" name=\"gender\" placeholder=\"Gender\">";
+    strVar += "<\/div>";
+
+    strVar += "<div class=\"input-group\" >";
+    strVar += "<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-send\"></i></span>";
+    strVar += "<input required id=\"registrationCountry\" type=\"text\" class=\"form-control\" name=\"country\" placeholder=\"Country\">";
+    strVar += "<\/div>";
+
+    strVar += "<div class=\"input-group\">";
+    strVar += "<span class=\"input-group-addon\" style=\"padding-left: 5px; padding-right: 7px;border-radius:0px;\">";
+    strVar += "<input id=\"registrationTnC\" type=\"checkbox\" name=\"tnc\" placeholder=\"tnc\"></span><a href=\"#\" onclick=\"showTnC();\" id=\"btn-t-c\"><strong class=\"label label-default\" style=\"margin-left: 10px;\">Agree Terms & Conditions</strong></a>";
+    strVar += "<\/div>";
+
+    strVar += "    <\/form>";
+    strVar += "    <\/div>";
+
+    strVar += "      <div class=\"modal-footer\">";
+    //strVar += "      <strong class=\"label label-danger\" style=\"margin-left: 10px;\"><label for=\"registrationCheckLbl\" id=\"registrationCheckLbl\"><\/label></strong>";
+    strVar += "        <span id=\"registrationCheckLbl\" style=\"font-size:12px;padding-right:35px;padding-left:35px;\" class=\"label label-danger\"></span>";
+    strVar += "        <button id=\"registrationSubmit\" value=\"Validate\" onclick=\"registrationFunction()\" type=\"button\" class=\"btn btn-success\">Register<\/button>";
+    strVar += "        <!-- button id=\"registrationCancel\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel<\/button -->";
+    strVar += "      <\/div>";
+    strVar += "    <\/div>";
+    strVar += "  <\/div>";
+    strVar += "<\/div>";
+
+    $('#registrationModalDiv').html(strVar);                       
+
+    //Model Positioning Fix: START
+    //if( navigator.userAgent.match(/iPhone|iPad|iPod/i) ) {
+
+    $('#registrationModal').on('hide.bs.modal', function (e) {
+        console.log('hide.bs.modal event fired');
+    });
+
+    $('#registrationModal').on('show.bs.modal', function(e) {
+        console.log('registration Modal Show Called');
+
+        // Position modal absolute and bump it down to the scrollPosition
+        $(this)
+            .css({
+                position: 'absolute',
+            });
+        setTimeout( function() {
+            $('.modal-backdrop').css({
+                position: 'absolute'
+            });
+        }, 0);
+    });
+    
+    //$('#registrationModal').modal('toggle');
+    $('#registrationModal').modal({backdrop: 'static', keyboard: false});    
+}
+
+function showLoginDialog()
+{
+    var strVar="";
+    strVar += "<div class=\"modal\" id=\"loginModal\" role=\"dialog\">";
+    strVar += "  <div class=\"modal-dialog modal-sm\">";
+    strVar += "";
+    //strVar += "    <!-- Modal content-->";
+    strVar += "    <div class=\"modal-content\">";
+    strVar += "      <div class=\"modal-header\">";
+    //strVar += "        <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;<\/button>";
+    strVar += "        <h4 class=\"modal-title\">Login<\/h4>";
+    strVar += "      <\/div>";
+    //strVar += "      <div class=\"modal-body\">";
+
+
+    strVar += "<div class=\"modal-body\">";
+    strVar += "<form class=\"form-horizontal\">";
+
+    strVar += "<div class=\"input-group\">";
+    strVar += "<span class=\"input-group-addon\">U</span>";
+    strVar += "<input id=\"loginUser\" type=\"text\" class=\"form-control\" name=\"msg\" placeholder=\"Additional Info\">";
+    strVar += "</div>";
+
+    strVar += "<div class=\"input-group\" >";
+    //strVar += "<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-lock\"></i>P</span>";
+    strVar += "<span class=\"input-group-addon\">P</span>";
+    strVar += "<input id=\"loginPass\" type=\"password\" class=\"form-control\" name=\"password\" placeholder=\"Password\">";
+    strVar += "<\/div>";
+    strVar += "    <\/form>";
+
+    strVar += "      <div class=\"modal-footer\">";
+    strVar += "        <label for=\"loginCheckLbl\" id=\"loginCheckLbl\"><\/label>";
+    strVar += "        <button id=\"loginSubmit\" onclick=\"loginFunction()\" type=\"button\" class=\"btn btn-success\">Submit<\/button>";
+    //strVar += "        <button id=\"loginCancel\" type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Cancel<\/button>";
+    strVar += "      <\/div>";
+
+
+    strVar += "";
+    strVar += "  <\/div>";
+    strVar += "<\/div>";
+    
+    $('#loginModalDiv').html(strVar);                       
+
+    $('#loginModal').on('hide.bs.modal', function (e) {
+        console.log('hide.bs.modal event fired');
+    });
+
+    $('#loginModal').on('show.bs.modal', function(e) {
+        console.log('Modal Show Called');
+
+        $(this)
+            .css({
+                position: 'absolute',
+            });
+        setTimeout( function() {
+            $('.modal-backdrop').css({
+                position: 'absolute'
+            });
+        }, 0);
+    });
+    //Model Positioning Fix: END    
+    
+    //$('#loginModal').modal('toggle');
+    $('#loginModal').modal({backdrop: 'static', keyboard: false});
+}
+
+function registrationFunction()    
+{
+	if($("#registrationForm")[0].checkValidity()) {
+
+        if (!$("#registrationTnC").is(":checked")) {
+            $("#registrationCheckLbl").text("Please agree to T&C");
+            return false;
+        }
+
+		//your form execution code
+		var _url = "http://logitia.com/logitia_new/demo/ThrivyKidsChubby/registration.php";
+
+		var userName = $("#registrationUsername").val();
+		var emailId = $("#registrationEmail").val();
+		var age = $("#registrationAge").val(); 
+		var gender = $("#registrationGender").val(); 
+		var country = $("#registrationCountry").val(); 
+		
+		$.post(_url, {userName:userName, email:emailId, age: age, gender:gender, country:country}, function( _response ) 
+		{
+			 console.log('response: ' + _response);
+			 
+			 if(_response == "done")
+			 {
+				 console.log('Registeration Successful');
+
+				 $("#registrationCheckLbl").text("Success");
+				 localStorage.setItem("registered", "true");
+				 setTimeout(function(){document.location.href="index.html";}, 1000);
+			 }
+			 else
+			 {
+				 console.log('Registeration Failed'); 
+
+				 $("#registrationCheckLbl").text("Failed");
+				 localStorage.removeItem("registered");
+			 }
+	   });    
+	}
+	else 
+	{ 
+		console.log("Invalid Form");
+		$("#registrationCheckLbl").text("All Fields Mandatory");
+		return -1;
+	}
+}
+
+function closeRegistrationDialog()  
+{
+  $('#registrationModal').modal('toggle'); 
+  window.setTimeout(removeRegistrationDivContent, 100);
+}
+
+function removeRegistrationDivContent()
+{
+    $('#registrationModal').empty();
+}
+
+function loginFunction()    
+{
+    var _url = "http://logitia.com/logitia_new/demo/ThrivyKidsChubby/login.php";
+    var userId = $("#loginUser").val();
+    var passwd = $("#loginPass").val(); 
+    
+    $.post(_url, { userId: userId, passwd: passwd }, function( _response ) 
+    {
+         console.log('response: ' + _response);
+     
+         if(_response == "done")
+         {
+             console.log('Login Successful');
+             $("label[for='loginCheckLbl']").text("Success");
+             localStorage.setItem("login", "true");
+
+             setTimeout(function(){closeLoginModal();}, 1000);             
+         }
+         else
+         {
+             console.log('Invalid Username/Password'); 
+             $("label[for='loginCheckLbl']").text("Failed");
+             localStorage.removeItem("login");
+         }
+         
+        //$('#loginBtnImg').attr('src','img/logout_new.png');     
+  });    
+}
+
+function closeLoginModal()  
+{
+ $('#loginModal').modal('toggle'); 
+  window.setTimeout(removeLoginDivContent, 100);  
+}
+
+function removeLoginDivContent()
+{
+    $('#loginModalDiv').empty();
+    document.location.href="index.html";
+}
+
+function logout()
+{
+    $('#logoutDiv').css('display', 'block')
+    localStorage.removeItem("login");
+    window.setTimeout(closeLogoutAlertTO, 1500);  
+}
+
+function closeLogoutAlert()
+{
+    $('#logoutDiv').css('display', 'none');
+    document.location.href="index.html";
+}
+
+function closeLogoutAlertTO()
+{
+    $('#logoutDiv').css('display', 'none');
+    document.location.href="index.html";
+}
+
+
+$( document ).ready(function() 
+{
+/*    
+  $('#book1').addClass('animated bounceInLeft');
+  $('#book2').addClass('animated bounceInDown');
+  $('#book3').addClass('animated bounceInRight');
+  $('#book4').addClass('animated bounceInLeft');
+  $('#book5').addClass('animated bounceInDown');
+  $('#book6').addClass('animated bounceInRight');
+*/
+
+  //check Login/Registration
+  if(!localStorage.getItem("registered"))  
+  {
+        showRegistrationDialog();
+  }
+  else //check which books have been read.
+  {
+    //Progress Check: Start
+      if(localStorage.getItem("Book1Complete"))  
+      {
+        console.log('Book1 Completed');
+        $('#book1').attr("src","images/Book1Done.png");
+      }
+
+      if(localStorage.getItem("Book2Complete"))  
+      {
+        console.log('Book2 Completed');
+        $('#book2').attr("src","images/Book2Done.png");
+      }
+
+      if(localStorage.getItem("Book3Complete"))  
+      {
+        console.log('Book3 Completed');
+        $('#book3').attr("src","images/Book3Done.png");
+      }
+
+      if(localStorage.getItem("Book4Complete"))  
+      {
+        console.log('Book4 Completed');
+        $('#book4').attr("src","images/Book4Done.png");
+      }
+
+      if(localStorage.getItem("Book5Complete"))  
+      {
+        console.log('Book5 Completed');
+        $('#book5').attr("src","images/Book5Done.png");
+      }
+
+      if(localStorage.getItem("Book6Complete"))  
+      {
+        console.log('Book6 Completed');
+        $('#book6').attr("src","images/Book6Done.png");
+      }
+  }
+/*    
+  else if(!localStorage.getItem("login"))
+        showLoginDialog();
+*/        
+    setTimeout(function(){loadProducts();}, 1000);
+
+});
+
+</script>
+
+</body>
+</html>
